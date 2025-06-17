@@ -1,1 +1,1 @@
-# Proyecto_Bimestral_PGA.
+# Proyecto_Bimestral_PGA
