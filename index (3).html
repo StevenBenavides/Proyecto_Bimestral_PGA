@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analítica de Datos</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f8;
+      color: #333;
+    }
+
+    header {
+      background-color: #b30000;
+      color: white;
+      padding: 2rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #ffcccc;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+    }
+
+    nav a {
+      color: #b30000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #800000;
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 2rem;
+    }
+
+    .intro {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.6rem;
+      line-height: 1.6;
+    }
+
+    .grafica-section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      align-items: center;
+      background-color: #fff0f0;
+      border: 1px solid #ffd6d6;
+      border-radius: 12px;
+      padding: 2rem;
+      margin-top: 2rem;
+      transition: box-shadow 0.3s ease;
+    }
+
+    .grafica-section:hover {
+      box-shadow: 0 0 12px rgba(179, 0, 0, 0.3);
+    }
+
+    .texto-interpre {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    iframe {
+      flex: 1;
+      min-width: 300px;
+      height: 350px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    h2 {
+      color: #b30000;
+    }
+
+    .datos-curiosos {
+      background-color: #ffeaea;
+      padding: 2rem;
+      border-top: 4px solid #ff4d4d;
+    }
+
+    .dato {
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    .dato:hover {
+      transform: scale(1.02);
+    }
+
+    .dato iframe {
+      width: 100%;
+      height: 300px;
+    }
+
+    footer {
+      background-color: #b30000;
+      color: white;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 1.3rem;
+      margin-top: 4rem;
+    }
+
+    .intro-section {
+      background: #fff0f0;
+      padding: 60px 20px;
+      text-align: center;
+      color: #3c0000;
+      border-bottom: 2px solid #ffcccc;
+    }
+
+    .intro-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .intro-content h2 {
+      font-size: 2em;
+      color: #b30000;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .intro-content p {
+      font-size: 1.2em;
+      line-height: 1.7;
+      margin-bottom: 15px;
+    }
+    #grafica1 p {
+      font-size: 1.2em;
+      line-height: 1.6;
+      color: #2a0000;
+      font-weight: 500;
+    } 
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Exploración de Datos sobre Nacidos Vivos en Ecuador 2023</h1>
+  </header>
+
+  <nav>
+    <a href="#introduccion">Introducción</a>
+    <a href="#grafica1">Principal</a>
+    <a href="#curiosidades">Datos Curiosos</a>
+  </nav>
+
+  <section id="introduccion" class="intro-section">
+  <div class="intro-content">
+    <h2>¿Qué vas a encontrar aquí?</h2>
+    <p>
+      ¿Alguna vez te has preguntado cuántos niños nacen cada año en Ecuador, o qué edad tienen, en promedio, las madres al momento del parto? Esta página te invita a descubrir datos sorprendentes sobre los nacimientos en nuestro país, a través de visualizaciones claras y explicaciones sencillas.
+    </p>
+    <p>
+      Utilizando información oficial del Instituto Nacional de Estadística y Censos (INEC), hemos analizado más de 240 mil registros de nacidos vivos en Ecuador. Aquí podrás explorar cómo varía la edad materna según la provincia, cuántos embarazos múltiples se registran, y qué curiosidades se esconden en los números.
+    </p>
+    <p>
+      Acompáñanos en este recorrido por la realidad demográfica del país. Los datos hablan, y te contamos sus historias de una forma comprensible y cercana. ¡Te sorprenderás con lo que revelan!
+    </p>
+  </div>
+
+    <div class="tabla-info" style="max-width: 800px; margin: 2rem auto; overflow-x: auto; transition: transform 0.3s ease, box-shadow 0.3s ease; border: 2px solid #ffcccc; border-radius: 10px;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead style="background-color: #ffe5e5;">
+          <tr>
+            <th style="padding: 12px; border-bottom: 2px solid #ffb3b3;">Fuente de Datos</th>
+            <th style="padding: 12px; border-bottom: 2px solid #ffb3b3;">Total de Filas</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 12px; border-bottom: 1px solid #ffd6d6;">
+              <a href="https://www.ecuadorencifras.gob.ec/nacidos-vivos-y-defunciones-fetales/" target="_blank" style="color: #b30000; text-decoration: none; font-weight: bold;">
+                https://www.ecuadorencifras.gob.ec/nacidos-vivos-y-defunciones-fetales/
+              </a>
+            </td>
+            <td style="padding: 12px;">241,295 registros de nacidos vivos</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <script>
+      const tabla = document.querySelector('.tabla-info');
+      tabla.addEventListener('mouseover', () => {
+        tabla.style.boxShadow = '0 8px 16px rgba(179, 0, 0, 0.2)';
+        tabla.style.transform = 'scale(1.01)';
+      });
+      tabla.addEventListener('mouseout', () => {
+        tabla.style.boxShadow = 'none';
+        tabla.style.transform = 'scale(1)';
+      });
+    </script>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿En qué provincias del Ecuador el analfabetismo materno sigue siendo una realidad?</h2>
+      <p>
+        Este análisis muestra cuántas madres de cada 1000 no saben leer y de qué provincias del Ecuador provienen, según los datos del año 2023.
+        Al observar el gráfico, podemos notar que la provincia de Pastaza es la que tiene el mayor número de madres que no saben leer, con un total de 39 de cada 1000 mujeres. Le sigue Morona Santiago con 29 de cada 1000 mujeres, y luego Esmeraldas con 14 de cada 1000 mujeres.
+        Esto nos muestra que el problema es más común en las provincias de la región Oriental y Costa del país, lo cual representa una situación preocupante.
+        Es importante que se tomen acciones para mejorar la educación en estas zonas, especialmente para las mujeres, ya que saber leer es fundamental para el desarrollo personal, familiar y comunitario.
+      </p>
+    </div>
+    <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753065403062_2023322635" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Qué provincias presentan más nacimientos por cesárea y qué dice eso de su sistema de salud?</h2>
+      <p>
+        Al observar los datos sobre nacimientos en Ecuador, se puede ver que algunas provincias tienen tasas de cesáreas considerablemente más altas que otras. Por ejemplo, en Los Ríos, de cada 1000 nacimientos, más de 640 se realizan por cesárea. Le siguen provincias como El Oro y Guayas, también con cifras elevadas.
+        Esto podría estar relacionado con varios factores del sistema de salud, como el acceso a hospitales, la disponibilidad de profesionales médicos o incluso decisiones institucionales sobre cómo atender los partos. Aunque las cesáreas pueden salvar vidas cuando son necesarias, un número muy alto también puede indicar que se están usando con demasiada frecuencia, incluso en casos donde un parto natural sería posible y más seguro.
+        Estos datos invitan a reflexionar sobre la calidad de la atención médica en diferentes regiones y la importancia de asegurar que cada mujer reciba el tipo de parto más adecuado para su salud y la de su bebé..
+      </p>
+    </div>
+    <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753217344790_1350877073" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Qué tan común es que las madres adolescentes no hayan terminado la educación básica?</h2>
+      <p>
+        Según los datos del 2023, la mayoría de las madres adolescentes en Ecuador sí han terminado la educación básica. Sin embargo, todavía existe un grupo —aunque pequeño— que no logró completar esta etapa escolar.
+        De cada 100 madres adolescentes, aproximadamente 9 sí terminaron la educación básica, mientras que menos de 1 no lo hizo. Aunque este último grupo es reducido, sigue siendo importante prestar atención a su situación.
+        La adolescencia es una etapa clave para el desarrollo personal, y que algunas jóvenes se conviertan en madres antes de finalizar su educación puede limitar sus oportunidades en el futuro. Este dato nos recuerda la importancia de fortalecer el acceso a la educación y a la salud sexual y reproductiva para que más adolescentes puedan decidir cuándo ser madres y terminar sus estudios..
+      </p>
+    </div>
+    <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753217341883_536753168" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Los hijos de las madres adolescentes, son mas propensos a tener problemas de talla y peso?</h2>
+      <p>
+        Contrario a lo que muchos podrían pensar, los datos del 2023 muestran que los hijos de madres adolescentes no presentan diferencias significativas en talla y peso al nacer si los comparamos con los hijos de madres adultas.
+        Según los estándares de la OMS, el peso promedio de un recién nacido es de aproximadamente 3000 gramos y la talla ronda los 48 centímetros. En el análisis, los bebés de madres adolescentes tienen un peso y una talla prácticamente iguales al promedio: varían apenas unas décimas por debajo o por encima en comparación con los bebés de madres adultas.
+        Este hallazgo es interesante, ya que suele asumirse que las madres adolescentes tienen más probabilidades de tener hijos prematuros o con bajo peso. En este caso, los datos no reflejan una diferencia considerable. Aun así, es importante seguir promoviendo el acceso a servicios de salud de calidad para todas las madres, independientemente de su edad, y asegurar que reciban el acompañamiento necesario durante el embarazo..
+      </p>
+    </div>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753711471045_1045833584" allowfullscreen></iframe>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753711702136_1244442582" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Las madres con un nivel de institucion (educaciòn) mas bajo, son mas propensas a tener mas embarazos?</h2>
+      <p>
+        Al analizar los datos del año 2023, se observa una relación clara entre el nivel educativo alcanzado y el número promedio de embarazos. Las madres con menor nivel de instrucción, como primaria, analfabetismo o sin ningún tipo de educación formal, presentan un promedio más alto de embarazos, con cifras que rondan entre 3.6 y 3.9 embarazos por mujer.
+        Por ejemplo, las madres sin ningún nivel educativo alcanzan un promedio de 3.81 embarazos, mientras que aquellas con solo educación primaria tienen un promedio de 3.88. En cambio, las madres que completaron la secundaria tienen un promedio más bajo, de 3.49 embarazos.
+        Esto sugiere que a menor nivel educativo, mayor es la probabilidad de tener varios hijos. Este patrón puede estar relacionado con el acceso limitado a información sobre salud sexual y reproductiva, métodos anticonceptivos, y oportunidades educativas y laborales.
+        Fortalecer la educación en todos los niveles, especialmente en temas de planificación familiar, es clave para que las mujeres puedan tomar decisiones informadas sobre su maternidad.
+      </p>
+    </div>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753676287094_152018089" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Cuantos nacimientos fueron registrados por menores de edad?</h2>
+      <p>
+        El análisis de los datos muestra que en varias provincias del país hay un número significativo de nacimientos de madres menores de edad. La provincia con más registros es Guayas, con 4,298 nacimientos de madres adolescentes, seguida por Manabí con 2,246, Los Ríos con 1,534, Pichincha con 1,518 y Esmeraldas con 1,218.
+        Estos números reflejan que, a pesar de los avances, todavía existe un alto porcentaje de jóvenes que se convierten en madres muy temprano. Este fenómeno representa un desafío importante para el país, ya que la maternidad en edades tempranas puede afectar la salud, educación y oportunidades de desarrollo tanto de las madres como de sus hijos.
+        Es fundamental continuar promoviendo la educación sexual integral y el acceso a servicios de salud adecuados para reducir esta cifra y apoyar a las adolescentes en la toma de decisiones informadas.
+      </p>
+    </div>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753850122468_1420090557" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿Es mas comun que en las zonas rurales al no tener hospitales cercanos existan mas partos normales que por cesarias, y en las zonas urbanas el caso contrario?</h2>
+      <p>
+        En respuesta a esta pregunta, podemos determinar parcialmente que es verdad que hay mas partos normales en la zona rural esto puede deberse a varios factores como la distancia en la que se encuentra un centro de salud, clinica u hospital cerca de la zona.
+        Tambien podemos concluir que en las zonas urbanas hay mas partos por cesaria debido a que facilmente pueden llegar a un centro de salud especializado y atenderse con la mayor brevedad posible.
+      </p>
+    </div>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753844531193_120390730" allowfullscreen></iframe>
+  </section>
+
+  <section id="grafica1" class="grafica-section">
+    <div class="texto-interpre">
+      <h2>¿En que zona de residencia se realizan mas controles prenatales durante el embarazo?</h2>
+      <p>
+        Verdaderamente nos sorprendio el analisis de esta pregunta, muchas personas pueden llegar a pensar que en la zona rural las madres casi no se realizan controles prenatales, pero tras este analisis podemos determinar que ajustan un promedio muy similar ambas zonas, lo cual nos dice que la mayoria de las madres de las dos zonas cumplen con lo establecido por la OMS de realizar como minimo 5 controles prenatales durante el embarazo.
+      </p>
+    </div>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753935225736_1478665486" allowfullscreen></iframe>
+  </section>
+
+  <section id="curiosidades" class="datos-curiosos">
+    <h2>Datos Curiosos</h2>
+
+    <div class="dato">
+      <h3>Problemas de nacimientos prematuros de madres de 11 años</h3>
+      <p>Las madres de 11 años y menores, promedian un total aproximado de 35 semanas de gestacion, lo que nos indica segun datos de la OMS que en promedio los nacidos de estas madres son prematuros.</p>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753676300075_1484566484"></iframe>
+    </div>
+
+    <div class="dato">
+      <h3>Nacimiento multiple termina siendo de siete</h3>
+      <p>En los resgistros que datan del año 2023 hubo un registro de nacimiento de 7 bebes y fue en la provincia de Pichincha.</p>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753679140749_1310990340"></iframe>
+    </div>
+
+    <div class="dato">
+      <h3>Edad promedio de las madres con un triple embarazo</h3>
+      <p>Dentro de los datos de las madres de los nacidos vivos en 2023 hubieron 58 casos en los que las madres dieron a luz a 3 bebes, de estos 58 casos la edad promedio de las madres fue de 31 años.</p>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753677422334_1922279557"></iframe>
+    </div>
+
+    <div class="dato">
+      <h3>Top 15 parroquias con mas nacimientos</h3>
+      <p>Mediante la siguiente grafica de puntos se puede observar que la parroquia con mas nacimientos es Tarqui con 16683, seguida de las parroquias Ximena, Guamani, Bolivar(Sagrario), Manta, Milagro, Pascuales, Itchimbia, Zaracay, Huaynacapac, Simon Plata Torres, Dr. Camilo Ponce, Machala, Calderon y Siete de Octubre.</p>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753850277137_145396989"></iframe>
+    </div>
+
+    <div class="dato">
+      <h3>La menor edad de una madre registrada en Ecuador 2023</h3>
+      <p>Es realmente impactante conocer este dato debido a que pocos se imaginarian que esa es la menor edad que tiene una madre en Ecuador.</p>
+      <iframe src="http://localhost:8080/#/notebook/2M3YEXD4V/paragraph/paragraph_1753679621108_976493978"></iframe>
+    </div>
+  </section>
+
+
+  <footer>
+    &copy; 2025 Analítica con Zeppelin | Hecho con datos de la INEC
+    <p>Tutor a cargo: Ing. Jorge Lopez<p>
+  </footer>
+
+</body>
+</html>
